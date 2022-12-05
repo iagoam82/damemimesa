@@ -1,0 +1,12 @@
+body{
+    background-image:url("/recursos/imagenes/fondo.jpg");  
+}
+.fondoclaro{
+    background-color:bisque
+}
+
+footer {
+    margin-top: auto;
+}
+
+.rojo{background-color: red;}

@@ -1,0 +1,43 @@
+body{
+    background-image:url("/recursos/imagenes/fondo.jpg");  
+}
+.fondoclaro{
+    background-color:bisque
+}
+.filtros{
+    background-color:bisque;
+    border-radius:10px;
+}
+.resultados{
+   background-color:bisque;
+   border-radius:10px;
+}
+.distancia{
+    margin:17px;
+    text-align: center;
+}
+.estancia{
+    margin:17px;
+    text-align: center;
+}
+.comensales{
+    margin:17px;
+    text-align: center;
+}
+.encontrados{
+    border:1px solid black ;
+    margin:17px;
+    border-radius:20px;
+    text-align: center;
+}
+.menosTamaño{
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: bold; 
+}
+.separado{
+    margin-bottom: 20px;
+}
+footer {
+    margin-top: auto;
+}

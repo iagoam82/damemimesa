@@ -1,0 +1,25 @@
+.container {
+	height:100vh;
+  background-color: #deb887;
+  
+}
+.container-fluid{
+	height:100vh;
+	background-image:url("/recursos/imagenes/fondo.jpg");
+}
+
+.fila1{
+	height:15vh;
+}
+
+.fila2{
+	height:70vh;
+}
+
+.fila3{
+	height:15vh;
+
+}    
+.fondoclaro{
+    background-color:bisque
+}
