@@ -18,14 +18,13 @@
                 <!-- Enlaces momentáneos inicio -->
 
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="vista/PerfilCliente.jsp">Perfil cliente</a></li>
-                    <li class="list-inline-item"><a href="vista/PrincipalCliente.jsp">Principal cliente</a></li>
-                    <li class="list-inline-item"><a href="vista/ReservaMesa.jsp">Reserva mesa </a></li>
+                    <li class="list-inline-item"><a href="PerfilCliente.jsp">Perfil cliente</a></li>
+                    <li class="list-inline-item"><a href="PrincipalCliente.jsp">Principal cliente</a></li>
+                    <li class="list-inline-item"><a href="ReservaMesa.jsp">Reserva mesa </a></li>
                     <li class="list-inline-item">//</li>
-                    <li class="list-inline-item"><a href="vista/PerfilLocal.jsp">Perfil local</a></li>
-                    <li class="list-inline-item"> <a href="vista/PrincipalLocal.jsp">Principal local</a></li>
-                    <li class="list-inline-item"><a href="vista/InfoMesa.jsp">Info mesa </a></li>
-                    <li class="list-inline-item"><a href="vista/variablesImplicias.jsp?usuario=juan">Objetos implicitos con EL</a></li>
+                    <li class="list-inline-item"><a href="PerfilLocal.jsp">Perfil local</a></li>
+                    <li class="list-inline-item"> <a href="PrincipalLocal.jsp">Principal local</a></li>
+                    <li class="list-inline-item"><a href="InfoMesa.jsp">Info mesa </a></li>
                 </ul>
                 <!-- Enlaces momentáneos fin -->
             </div>
@@ -57,8 +56,8 @@
                                 <button type="button" class="btn btn-primary dropdown-toggle"
                                         data-bs-toggle="dropdown" aria-expanded="false"> Registrarse</button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="vista/RegistroCliente.jsp">Registrarse como cliente</a></li>
-                                    <li><a class="dropdown-item" href="vista/RegistroLocal.jsp">Registrarse como local</a></li>
+                                    <li><a class="dropdown-item" href="RegistroCliente.jsp">Registrarse como cliente</a></li>
+                                    <li><a class="dropdown-item" href="RegistroLocal.jsp">Registrarse como local</a></li>
                                 </ul>
                             </div>
                         </form>

@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@page import="controladores.ControladorLocal"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
+        
 <!doctype html>
 <html lang="en">
     <head>
@@ -50,7 +54,11 @@
                                     <div class="invalid-feedback">Por favor introduzca una contraseña válida.</div>
                                 </div>
                                 <br>
-                                <button class="w-100 btn btn-primary btn-lg" type="submit">Registrarse</button>
+                                <button class="w-100 btn btn-primary btn-lg" type="submit">
+                                    <a href="${pageContext.request.contextPath}/ControladorLocal?accion=listaVista">
+                                        Registrarse
+                                    </a>
+                                </button>
                             </form>
                         </div>
                     </main>

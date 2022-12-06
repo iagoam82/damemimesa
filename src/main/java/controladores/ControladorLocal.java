@@ -37,6 +37,9 @@ public class ControladorLocal extends HttpServlet {
                 case "listar":
                     this.listarLocal(request, response);
                     break;
+                case "listaVista":
+                    this.listarLocalVistaPrincipal(request, response);
+                    break;
             }
         }
     }
@@ -58,9 +61,9 @@ public class ControladorLocal extends HttpServlet {
             throws ServletException, IOException {
         List<Local> locales = new LocalDAO().listar();
         HttpSession session = request.getSession();
-        session.setAttribute("locales",locales);
+        session.setAttribute("locales", locales);
         response.sendRedirect("ListaRestaurantes.jsp");
-        
+
         /*for (int i = 0; i < locales.size(); i++) {
             long telefono = locales.get(i).getTelefonoLocal();
             String direccion = locales.get(i).getDireccionLocal();
@@ -75,9 +78,6 @@ public class ControladorLocal extends HttpServlet {
        }*/
         //RequestDispatcher rd = request.getRequestDispatcher("../ListaRestaurantes.jsp");
         //rd.forward(request, response);
-        
-        
-
         /*List<Local> locales= new LocalDAO().listar();
        
         System.out.println("locales = "+ locales);
@@ -85,5 +85,13 @@ public class ControladorLocal extends HttpServlet {
         session.setAttribute("locales",locales);
         request.getRequestDispatcher("ListaRestaurantes.jsp").forward(request, response);
          */
+    }
+
+    private void listarLocalVistaPrincipal(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Local> locales = new LocalDAO().listar();
+        HttpSession session = request.getSession();
+        session.setAttribute("locales", locales);
+        response.sendRedirect("PrincipalCliente.jsp");
     }
 }

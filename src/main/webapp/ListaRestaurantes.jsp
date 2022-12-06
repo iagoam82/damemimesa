@@ -19,9 +19,9 @@
                                     <div class="card-body">
                                        
                                         <h5 class="card-title">Nombre:${local.nombreLocal} </h5>
-                                      <p class="card-text">Dirección: ${local.nombre} </p>
-                                      <p class="card-text">Email: ${local.nombre_local} </p>
-                                      <p class="card-text">Teléfono: ${local.nombre_local} </p>
+                                      <p class="card-text">Dirección: ${local.direccionLocal} </p>
+                                      <p class="card-text">Email: ${local.emailLocal} </p>
+                                      <p class="card-text">Teléfono: ${local.telefonoLocal} </p>
                                       <a href="#" class="card-link">Ver en google</a>
                                       <a href="#" class="card-link">Reserva</a>
                                     </div>

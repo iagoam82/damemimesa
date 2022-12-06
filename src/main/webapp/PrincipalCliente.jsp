@@ -38,7 +38,7 @@
                     </svg>
                   </a>
                   <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="vista/PerfilCliente.jsp">Mi perfil</a></li>
+                    <li><a class="dropdown-item" href="PerfilCliente.jsp">Mi perfil</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                   </ul>
@@ -91,18 +91,18 @@
                     <div class="col-9 resultados" >
                         <div class="row">
                             <!--AQUÍ SALE LA LISTA DE RESTAURANTES FILTRADOS-->
-                            <c:forEach var="local" items="${locales}">
+                            <c:forEach  items="${locales}" var="local">
                                 <div class="card m-1" style="width: 17rem;text-align:center;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Nombre: ${local.nombreLocal}  </h5>
-                                      <p class="card-text">Dirección: ${local.nombre} </p>
-                                      <p class="card-text">Email: ${local.nombre_local} </p>
+                                    <div class="card-body">                                       
+                                        <h5 class="card-title">Nombre:${local.nombreLocal} </h5>
+                                      <p class="card-text">Dirección: ${local.direccionLocal} </p>
+                                      <p class="card-text">Email: ${local.emailLocal} </p>
                                       <p class="card-text">Teléfono: ${local.telefonoLocal} </p>
                                       <a href="#" class="card-link">Ver en google</a>
                                       <a href="#" class="card-link">Reserva</a>
                                     </div>
                                 </div>
-                            </c:forEach>                                                                                                                                   
+                            </c:forEach>                                                                                                                                    
                         </div>   
                     </div>
                 </div>

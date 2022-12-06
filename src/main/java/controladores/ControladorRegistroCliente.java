@@ -62,8 +62,9 @@ public class ControladorRegistroCliente extends HttpServlet {
         HttpSession sesion = request.getSession();
         sesion.setAttribute("email", cliente.getEmailCliente());
         System.out.println(cliente.getEmailCliente());
-        RequestDispatcher rd = request.getRequestDispatcher("vista/PrincipalCliente.jsp");
-        rd.forward(request, response);
+        //RequestDispatcher rd = request.getRequestDispatcher("PrincipalCliente.jsp");
+        response.sendRedirect("PrincipalCliente.jsp");
+        
     }
 
     private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
@@ -71,7 +72,7 @@ public class ControladorRegistroCliente extends HttpServlet {
         HttpSession sesion = request.getSession();
         String emailCliente = sesion.getAttribute("email").toString();
         int registrosModificados = new ClienteDAO().eliminar(emailCliente);
-        RequestDispatcher rd = request.getRequestDispatcher("vista/PrincipalCliente.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("PrincipalCliente.jsp");
         rd.forward(request, response);
 
     }
