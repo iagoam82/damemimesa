@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.*;
+import java.util.*;
 import modelo.*;
 
 public class ClienteDAO {
@@ -11,8 +11,6 @@ public class ClienteDAO {
     /*private static final String SQL_SELECT = "SELECT id_cliente, nombre, apellido, email, telefono, saldo "
             + " FROM cliente";*/
 
- /*private static final String SQL_SELECT_BY_ID = "SELECT id_cliente, nombre, apellido, email, telefono, saldo "
-            + " FROM cliente WHERE id_cliente = ?";*/
     private static final String SQL_INSERT = "INSERT INTO cliente(nombre_cliente, email_cliente, password_cliente) "
             + " VALUES(?, ?, ?)";
 
@@ -20,6 +18,9 @@ public class ClienteDAO {
             + " SET nombre_cliente=?, password_cliente=?WHERE email_cliente=?";
 
     private static final String SQL_DELETE = "DELETE FROM cliente WHERE email_cliente = ?";
+    
+    private static final String SQL_FINDBYID = "SELECT * FROM cliente WHERE email_cliente = ? AND password_cliente = ?";
+  
 
     /*public List<Cliente> listar() {
         Connection conn = null;
@@ -144,7 +145,6 @@ public class ClienteDAO {
             conn = ConexionBD.getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setString(1, email);
-
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -153,6 +153,39 @@ public class ClienteDAO {
             ConexionBD.close(conn);
         }
         return rows;
+    }
+    
+    public boolean encontrar(String email, String password) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean lleno = false;
+        
+        
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            conn = ConexionBD.getConnection();
+            stmt = conn.prepareStatement(SQL_FINDBYID);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
+            if(rs.isBeforeFirst() ){
+                lleno=true;
+            }
+            
+       } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            ConexionBD.close(rs);
+            ConexionBD.close(stmt);
+            ConexionBD.close(conn);
+        }
+        return lleno;
+        
     }
 
 }

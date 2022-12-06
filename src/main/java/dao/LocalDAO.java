@@ -17,6 +17,7 @@ public class LocalDAO {
     
    private static final String SQL_SELECT = "SELECT telefono_local, direccion_local, nombre_local, email_local FROM local"; 
    private static final String SQL_INSERT = "INSERT INTO local(telefono_local, direccion_local, nombre_local,email_local, password_local)  VALUES(?, ?, ?, ?, ?)";
+   private static final String SQL_FINDBYID= "SELECT * FROM local WHERE email_local = ? AND password_local = ?";
     
    public List<Local> listar() {
         Connection conn = null;
@@ -81,6 +82,42 @@ public class LocalDAO {
         }
         return rows;
     }
+    
+    public boolean encontrar(String email, String password) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean lleno = false;
+        
+        
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(LocalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            conn = ConexionBD.getConnection();
+            stmt = conn.prepareStatement(SQL_FINDBYID);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
+            if(rs.isBeforeFirst() ){
+                lleno=true;
+            }
+            
+       } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            ConexionBD.close(rs);
+            ConexionBD.close(stmt);
+            ConexionBD.close(conn);
+        }
+        return lleno;
+        
+    }
+    
+    
+    
     
     
     

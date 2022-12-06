@@ -1,4 +1,7 @@
-
+<%@page import="controladores.ControladorRegistroCliente"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,18 +35,18 @@
                 <div class="col-3 izquierda"></div>
                 <div class="col-6 centro text-center">
                     <main class="form-signin w-100 mb-5 mt-5">
-                        <form>
+                        <form class="needs-validation novalidate" method="post" action="../ControladorRegistroCliente?accion=login">
                             <img class="mb-4" src="recursos/imagenes/logo.png" alt="" width="200" height="100">
                             <h1 class="h3 mb-3 fw-normal">Introduce tus datos</h1>
 
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInput"
-                                       placeholder="name@example.com"> <label
+                            <div class="form-floating input-group has-validation">
+                                <input type="email" class="form-control" name ="email" id="floatingInput"
+                                       placeholder="name@example.com" required> <label
                                        for="floatingInput">Email</label>
                             </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                       placeholder="Password"> <label for="floatingPassword">Contraseña</label>
+                            <div class="form-floating input-group has-validation">
+                                <input type="password" class="form-control" name ="password" id="floatingPassword"
+                                       placeholder="Password" required> <label for="floatingPassword">Contraseña</label>
                             </div>
 
                             <div class="checkbox mb-3">
@@ -54,7 +57,10 @@
                             <hr>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown" aria-expanded="false"> Registrarse</button>
+                                        data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Registrarse
+                                    
+                                </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="RegistroCliente.jsp">Registrarse como cliente</a></li>
                                     <li><a class="dropdown-item" href="RegistroLocal.jsp">Registrarse como local</a></li>

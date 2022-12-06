@@ -54,10 +54,7 @@
                                     <div class="invalid-feedback">Por favor introduzca una contraseña válida.</div>
                                 </div>
                                 <br>
-                                <button class="w-100 btn btn-primary btn-lg" type="submit">
-                                    <a href="${pageContext.request.contextPath}/ControladorLocal?accion=listaVista">
-                                        Registrarse
-                                    </a>
+                                <button class="w-100 btn btn-primary btn-lg" type="submit">Registrarse                                 
                                 </button>
                             </form>
                         </div>

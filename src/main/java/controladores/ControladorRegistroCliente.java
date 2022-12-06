@@ -10,7 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
  */
 import dao.ClienteDAO;
+import dao.LocalDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.Cliente;
+import modelo.Local;
 
 @WebServlet("/ControladorRegistroCliente")
 public class ControladorRegistroCliente extends HttpServlet {
@@ -31,8 +34,11 @@ public class ControladorRegistroCliente extends HttpServlet {
             switch (accion) {
                 case "insertar":
                     this.insertarCliente(request, response);
+                   
                     break;
-                
+                case "login":
+                    this.loginCliente(request,response);
+                    break;
             }
         }
     }
@@ -45,8 +51,7 @@ public class ControladorRegistroCliente extends HttpServlet {
             switch (accion) {
                 case "eliminar":
                     this.eliminarCliente(request, response);
-                    break;
-
+                    break;                
             }
         }
     }
@@ -58,12 +63,14 @@ public class ControladorRegistroCliente extends HttpServlet {
         String email = request.getParameter("email");
         Cliente cliente = new Cliente(nombre, password, email);
         int registrosModificados = new ClienteDAO().insertar(cliente);
-        System.out.println("Req modif" + registrosModificados);
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("email", cliente.getEmailCliente());
-        System.out.println(cliente.getEmailCliente());
-        //RequestDispatcher rd = request.getRequestDispatcher("PrincipalCliente.jsp");
-        response.sendRedirect("PrincipalCliente.jsp");
+        if(registrosModificados > 0){
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("email", cliente.getEmailCliente());
+            System.out.println(cliente.getEmailCliente());
+             this.listarLocal(request, response);
+            //RequestDispatcher rd = request.getRequestDispatcher("PrincipalCliente.jsp");
+            //response.sendRedirect("PrincipalCliente.jsp");
+        }
         
     }
 
@@ -76,62 +83,32 @@ public class ControladorRegistroCliente extends HttpServlet {
         rd.forward(request, response);
 
     }
-
-
-    /*
-    //Método para el insert
-    public static void insertar(Cliente cliente) {
-                
-        PreparedStatement ps;
-	String sql = "INSERT INTO cliente VALUES (?,?,?)";
-	try {
-            Connection conexion = ConexionBD.getConnection();
-            ps = conexion.prepareStatement(sql);
-            ps.setString (1,cliente.getnombreCliente());
-            ps.setString (2,cliente.getemailCliente());
-            ps.setString (3,cliente.getpasswordCliente());
-            ps.executeUpdate();
-            ConexionBD.close(ps);
-            ConexionBD.close(conexion);
-	} catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-	}
-    }
-     */
-
- /*response.setContentType("text/html;charset=UTF-8");
-        //PrintWriter out = response.getWriter();
-        //Recoger parámetros y creo objeto Cliente
-        String nombre = request.getParameter("nombre");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+    
+    
+    private void loginCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException { 
+         String email = request.getParameter("email");
+         String password = request.getParameter("password");
+         boolean usuarioExiste = new ClienteDAO().encontrar(email,password);
+         if(usuarioExiste == true ){
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("email", email);
+            this.listarLocal(request, response);
+            //response.sendRedirect("/ControladorLocal?accion=listaVista");            
+         }else {
+             response.sendRedirect("index.jsp");
+         }
         
-        Cliente cliente=new Cliente(nombre,email,password);
-         ClienteDAO cliente1 =  new ClienteDAO();
-         cliente1.insertar(cliente);*/
- /*Connection conexion;
-                PreparedStatement ps;
-		String sql = "INSERT INTO cliente VALUES (?,?,?)";
-		try {
-                    Class.forName("com.mysql.jdbc.Driver");
-		    conexion = ConexionBD.getConnection();
-		    ps = conexion.prepareStatement(sql);
-		    ps.setString (1,nombre);
-		    ps.setString (2,email);
-		    ps.setString (3,password);
-		    ps.executeUpdate();
-		    ps.close();
-		    conexion.close();
-		} catch (SQLException ex) {
-		    ex.printStackTrace(System.out);
-		} catch (ClassNotFoundException ex) {
-           Logger.getLogger(ControladorRegistroCliente.class.getName()).log(Level.SEVERE, null, ex);
-       }*/
-    //Escribir en pantalla
-    /*out.print(nombre);
-        out.print("<hr>");
-        out.print(email);
-        out.print("<hr>");
-        out.print(password);
-        out.print("<hr>");*/
+         
+        
+        
+    }
+    
+    private void listarLocal(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Local> locales = new LocalDAO().listar();
+        HttpSession session = request.getSession();
+        session.setAttribute("locales", locales);
+        response.sendRedirect("PrincipalCliente.jsp");
+    }
 }

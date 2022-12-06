@@ -24,6 +24,9 @@ public class ControladorLocal extends HttpServlet {
                 case "insertar":
                     this.insertarLocal(request, response);
                     break;
+                case "loginLocal":  
+                    this.loginLocal(request,response);
+                    break;
             }
         }
     }
@@ -54,7 +57,6 @@ public class ControladorLocal extends HttpServlet {
         Local local = new Local(telefono, direccion, nombre, email, password);
         int registrosModificados = new LocalDAO().insertar(local);
         System.out.println("Req modif" + registrosModificados);
-
     }
 
     private void listarLocal(HttpServletRequest request, HttpServletResponse response)
@@ -62,29 +64,7 @@ public class ControladorLocal extends HttpServlet {
         List<Local> locales = new LocalDAO().listar();
         HttpSession session = request.getSession();
         session.setAttribute("locales", locales);
-        response.sendRedirect("ListaRestaurantes.jsp");
-
-        /*for (int i = 0; i < locales.size(); i++) {
-            long telefono = locales.get(i).getTelefonoLocal();
-            String direccion = locales.get(i).getDireccionLocal();
-            String nombre = locales.get(i).getNombreLocal();
-            String email = locales.get(i).getEmailLocal();
-            String password = locales.get(i).getPasswordLocal();
-            request.setAttribute("telefono", telefono);
-            request.setAttribute("direccion", direccion);
-            request.setAttribute("nombre", nombre);
-            request.setAttribute("email", email);
-          
-       }*/
-        //RequestDispatcher rd = request.getRequestDispatcher("../ListaRestaurantes.jsp");
-        //rd.forward(request, response);
-        /*List<Local> locales= new LocalDAO().listar();
-       
-        System.out.println("locales = "+ locales);
-        HttpSession session = request.getSession();
-        session.setAttribute("locales",locales);
-        request.getRequestDispatcher("ListaRestaurantes.jsp").forward(request, response);
-         */
+        response.sendRedirect("ListaRestaurantes.jsp");     
     }
 
     private void listarLocalVistaPrincipal(HttpServletRequest request, HttpServletResponse response)
@@ -93,5 +73,19 @@ public class ControladorLocal extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("locales", locales);
         response.sendRedirect("PrincipalCliente.jsp");
+    }
+
+    private void loginLocal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+         String email = request.getParameter("email");
+         String password = request.getParameter("password");
+         boolean localExiste = new LocalDAO().encontrar(email,password);
+         if(localExiste= true ){
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("email", email);
+            response.sendRedirect("PrincipalLocal.jsp");            
+         }
+         else{             
+             response.sendRedirect("index.jsp");   
+         }
     }
 }
