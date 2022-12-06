@@ -1,8 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <%@page import="modelo.Local" %>
 <%@page import="controladores.ControladorLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 
 
 <!DOCTYPE html>
@@ -12,14 +14,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <c:forEach var="local" items="${locales}">
+        <c:forEach  items="${locales}" var="local">
                                 <div class="card m-1" style="width: 17rem;text-align:center;">
                                     <div class="card-body">
                                        
-                                        <h5 class="card-title">Nombre: ${local.nombreLocal}  </h5>
+                                        <h5 class="card-title">Nombre:${local.nombreLocal} </h5>
                                       <p class="card-text">Dirección: ${local.nombre} </p>
                                       <p class="card-text">Email: ${local.nombre_local} </p>
-                                      <p class="card-text">Teléfono: ${local.telefonoLocal} </p>
+                                      <p class="card-text">Teléfono: ${local.nombre_local} </p>
                                       <a href="#" class="card-link">Ver en google</a>
                                       <a href="#" class="card-link">Reserva</a>
                                     </div>

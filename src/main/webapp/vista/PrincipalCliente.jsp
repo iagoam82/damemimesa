@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <%@page import="modelo.Local" %>
 <%@page import="controladores.ControladorLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,7 +23,8 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                   <li><a href="#" class="nav-link px-2 link-secondary">Búsqueda</a></li>
-                  <li><a href="vista/ListaRestaurantes.jsp" class="nav-link px-2 link-dark" action="../ControladorLocal?accion=listar">Restaurantes</a></li>
+                  <!--boton listar restaurantes-->
+                  <li><a href="${pageContext.request.contextPath}/ControladorLocal?accion=listar" class="nav-link px-2 link-dark">Restaurantes</a></li>
                   <li><a href="#" class="nav-link px-2 link-dark">Mis reservas</a></li>
                 </ul>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -36,7 +38,7 @@
                     </svg>
                   </a>
                   <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+                    <li><a class="dropdown-item" href="vista/PerfilCliente.jsp">Mi perfil</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                   </ul>
@@ -112,7 +114,7 @@
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fondoclaro">
     <p class="col-md-4 mb-0 text-muted">&copy; 2022 damemimesa</p>
 
-    <a href="/index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                   <img src="/recursos/imagenes/logo.png" class="img-fluid" alt="logo damemimesa" style="width:140px;height:65px;">
                 </a>
 

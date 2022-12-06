@@ -15,10 +15,8 @@ import modelo.ConexionBD;
 
 public class LocalDAO {
     
-   private static final String SQL_SELECT = "SELECT telefono_local, direccion_local, nombre_local, email_local "
-            + " FROM local"; 
-   private static final String SQL_INSERT = "INSERT INTO local(telefono_local, direccion_local, nombre_local,email_local, password_local) "
-            + " VALUES(?, ?, ?, ?, ?)";
+   private static final String SQL_SELECT = "SELECT telefono_local, direccion_local, nombre_local, email_local FROM local"; 
+   private static final String SQL_INSERT = "INSERT INTO local(telefono_local, direccion_local, nombre_local,email_local, password_local)  VALUES(?, ?, ?, ?, ?)";
     
    public List<Local> listar() {
         Connection conn = null;

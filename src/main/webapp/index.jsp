@@ -19,7 +19,7 @@
 
                 <ul class="list-inline">
                     <li class="list-inline-item"><a href="vista/PerfilCliente.jsp">Perfil cliente</a></li>
-                    <li class="list-inline-item"><a href="PrincipalCliente.jsp">Principal cliente</a></li>
+                    <li class="list-inline-item"><a href="vista/PrincipalCliente.jsp">Principal cliente</a></li>
                     <li class="list-inline-item"><a href="vista/ReservaMesa.jsp">Reserva mesa </a></li>
                     <li class="list-inline-item">//</li>
                     <li class="list-inline-item"><a href="vista/PerfilLocal.jsp">Perfil local</a></li>

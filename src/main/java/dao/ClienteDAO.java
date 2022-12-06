@@ -131,14 +131,19 @@ public class ClienteDAO {
         return rows;
     }
 
-    public int eliminar(Cliente cliente) {
+    public int eliminar(String email) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
             conn = ConexionBD.getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setString(1, cliente.getEmailCliente());
+            stmt.setString(1, email);
 
             rows = stmt.executeUpdate();
         } catch (SQLException ex) {

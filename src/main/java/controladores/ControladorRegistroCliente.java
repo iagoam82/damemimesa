@@ -11,11 +11,13 @@ import java.util.logging.Logger;
  */
 import dao.ClienteDAO;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Cliente;
 
 @WebServlet("/ControladorRegistroCliente")
@@ -30,6 +32,21 @@ public class ControladorRegistroCliente extends HttpServlet {
                 case "insertar":
                     this.insertarCliente(request, response);
                     break;
+                
+            }
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "eliminar":
+                    this.eliminarCliente(request, response);
+                    break;
+
             }
         }
     }
@@ -42,8 +59,23 @@ public class ControladorRegistroCliente extends HttpServlet {
         Cliente cliente = new Cliente(nombre, password, email);
         int registrosModificados = new ClienteDAO().insertar(cliente);
         System.out.println("Req modif" + registrosModificados);
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("email", cliente.getEmailCliente());
+        System.out.println(cliente.getEmailCliente());
+        RequestDispatcher rd = request.getRequestDispatcher("vista/PrincipalCliente.jsp");
+        rd.forward(request, response);
+    }
+
+    private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        String emailCliente = sesion.getAttribute("email").toString();
+        int registrosModificados = new ClienteDAO().eliminar(emailCliente);
+        RequestDispatcher rd = request.getRequestDispatcher("vista/PrincipalCliente.jsp");
+        rd.forward(request, response);
 
     }
+
 
     /*
     //Método para el insert

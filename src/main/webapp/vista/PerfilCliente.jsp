@@ -1,4 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="controladores.ControladorRegistroCliente"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,11 +74,16 @@
                         </div>
                         <br>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Guardar cambios</button>
-                        <hr>
-                        <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit">Eliminar perfil</button>
+                        <hr>                      
+                        <!--BOTON ELIMINAR USUARIO-->
+                            <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit" >
+                                <a href="${pageContext.request.contextPath}/ControladorRegistroCliente?accion=eliminar&email_cliente=${email}">
+                                    Eliminar perfil
+                                </a>
+                            </button>
                     </form>
                 </div>
-            </main>
+            </main>S
                 </div>
                 <div class="col-3"></div>
             </div>
