@@ -31,7 +31,7 @@
                             </svg>
                         </a>
                         <ul class="dropdown-menu text-small">
-                            <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="PerfilLocal.jsp">Mi perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                         </ul>

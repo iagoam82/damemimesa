@@ -52,25 +52,17 @@
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="username" class="form-label">Nombre de usuario</label>
+                                <label for="username" class="form-label" >Nombre de usuario</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="username"
-                                           placeholder="Mi nombre de usuario" >
+                                    <input type="text" class="form-control" id="nombre" value="${cliente.nombreCliente}">
                                     <div class="invalid-feedback">Necesita aportar un nombre de usuario.</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <label for="email" class="form-label disabled readonly" aria-label="Disabled input example" >Email (No se puede cambiar)</label> <input
-                                type="email" class="form-control" id="email"
-                                placeholder="mi.correo@mail.com" >
+                            <label for="email" class="form-label" aria-label="Disabled input example" >Email (No se puede cambiar)</label> 
+                            <input type="email" class="form-control" id="email" value="${cliente.emailCliente}" >
                             <div class="invalid-feedback">Por favor introduzca un email válido.</div>
-                        </div>
-                        <div class="col-12">
-                            <label for="password" class="form-label">Contraseña</label> <input
-                                type="password" class="form-control" id="password"
-                                placeholder="1234" >
-                            <div class="invalid-feedback">Por favor introduzca una contraseña válida.</div>
                         </div>
                         <br>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Guardar cambios</button>
@@ -83,7 +75,7 @@
                             </button>
                     </form>
                 </div>
-            </main>S
+            </main>
                 </div>
                 <div class="col-3"></div>
             </div>

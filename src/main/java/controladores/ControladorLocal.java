@@ -24,8 +24,8 @@ public class ControladorLocal extends HttpServlet {
                 case "insertar":
                     this.insertarLocal(request, response);
                     break;
-                case "loginLocal":  
-                    this.loginLocal(request,response);
+                case "loginLocal":
+                    this.loginLocal(request, response);
                     break;
             }
         }
@@ -43,20 +43,34 @@ public class ControladorLocal extends HttpServlet {
                 case "listaVista":
                     this.listarLocalVistaPrincipal(request, response);
                     break;
+                case "loginLocal":
+                    this.loginLocal(request, response);
+                    break;
+                case "eliminar":
+                    this.eliminarLocal(request, response);
+                    break; 
             }
         }
     }
 
     private void insertarLocal(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        long telefono = Long.parseLong(request.getParameter("telefono"));
-        String direccion = request.getParameter("direccion");
-        String nombre = request.getParameter("nombre");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        Local local = new Local(telefono, direccion, nombre, email, password);
+        long telefonoLocal = Long.parseLong(request.getParameter("telefonoLocal"));
+        String direccionLocal = request.getParameter("direccionLocal");
+        String nombreLocal = request.getParameter("nombreLocal");
+        String emailLocal = request.getParameter("emailLocal");
+        String passwordLocal = request.getParameter("passwordLocal");
+        Local local = new Local(telefonoLocal, direccionLocal, nombreLocal, emailLocal, passwordLocal);
         int registrosModificados = new LocalDAO().insertar(local);
-        System.out.println("Req modif" + registrosModificados);
+        if (registrosModificados > 0) {
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("local", local);
+            response.sendRedirect("PrincipalLocal.jsp");
+        } else {
+            response.sendRedirect("index.jsp");
+        }
+        
+
     }
 
     private void listarLocal(HttpServletRequest request, HttpServletResponse response)
@@ -64,7 +78,7 @@ public class ControladorLocal extends HttpServlet {
         List<Local> locales = new LocalDAO().listar();
         HttpSession session = request.getSession();
         session.setAttribute("locales", locales);
-        response.sendRedirect("ListaRestaurantes.jsp");     
+        response.sendRedirect("ListaRestaurantes.jsp");
     }
 
     private void listarLocalVistaPrincipal(HttpServletRequest request, HttpServletResponse response)
@@ -75,17 +89,33 @@ public class ControladorLocal extends HttpServlet {
         response.sendRedirect("PrincipalCliente.jsp");
     }
 
-    private void loginLocal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-         String email = request.getParameter("email");
-         String password = request.getParameter("password");
-         boolean localExiste = new LocalDAO().encontrar(email,password);
-         if(localExiste= true ){
+    private void eliminarLocal(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        
+        Local local = (Local) sesion.getAttribute("local");
+        long telefono= local.getTelefonoLocal();
+        String nombre=local.getNombreLocal();
+        int registrosModificados = new LocalDAO().eliminar(telefono, nombre);
+        if (registrosModificados > 0) {
+            response.sendRedirect("index.jsp");
+            //rd.forward(request, response);
+        } else {
+            response.sendRedirect("PerfilLocal.jsp");
+        }
+
+    }
+
+    private void loginLocal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String emailLocal = request.getParameter("emailLocal");
+        String passwordLocal = request.getParameter("passwordLocal");
+        Local local = new LocalDAO().encontrar(emailLocal, passwordLocal);
+        if (local ==null) {
+            response.sendRedirect("index.jsp");
+        } else {
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("email", email);
-            response.sendRedirect("PrincipalLocal.jsp");            
-         }
-         else{             
-             response.sendRedirect("index.jsp");   
-         }
+            sesion.setAttribute("local", local);
+            response.sendRedirect("PrincipalLocal.jsp");
+        }
     }
 }

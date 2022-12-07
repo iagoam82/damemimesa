@@ -32,7 +32,7 @@
 								<div class="col-12">
 									<label for="username" class="form-label">Nombre de usuario</label>
 									<div class="input-group has-validation">
-										<input type="text" class="form-control" name="nombre" id="username"
+										<input type="text" class="form-control" name="nombreLocal" id="username"
 											placeholder="Mi nombre de usuario" required>
 										<div class="invalid-feedback">Necesita aportar un nombre de usuario.</div>
 									</div>
@@ -40,25 +40,25 @@
 							</div>
 							<div class="col-12">
 								<label for="Address" class="form-label">Dirección</label>
-								<input type="text" class="form-control" name="direccion" id="adress"
+								<input type="text" class="form-control" name="direccionLocal" id="adress"
 									placeholder="C/ de la hostelería, 37" required>
 								<div class="invalid-feedback">Por favor introduzca una dirección válida.</div>
 							</div>
 							<div class="col-12">
 								<label for="Phone" class="form-label">Teléfono</label>
-								<input type="text" class="form-control" name="telefono" id="phone"
+								<input type="text" class="form-control" name="telefonoLocal" id="phone"
 									placeholder="600123456" required>
 								<div class="invalid-feedback">Por favor introduzca un teléfono válido.</div>
 							</div>
 							<div class="col-12">
 								<label for="email" class="form-label">Email</label>
-								<input type="email" class="form-control" name="email" id="email"
+								<input type="email" class="form-control" name="emailLocal" id="email"
 									placeholder="mi.correo@mail.com" required>
 								<div class="invalid-feedback">Por favor introduzca un email válido.</div>
 							</div>
 							<div class="col-12">
 								<label for="password" class="form-label">Contraseña</label>
-								<input type="password" class="form-control" name="password" id="password"
+								<input type="password" class="form-control" name="passwordLocal" id="password"
 									placeholder="1234" required>
 								<div class="invalid-feedback">Por favor introduzca una contraseña válida.</div>
 							</div>
