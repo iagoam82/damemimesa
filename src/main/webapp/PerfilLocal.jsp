@@ -68,12 +68,12 @@
                                     <div class="invalid-feedback">Por favor introduzca una dirección válida.</div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="telefono" class="form-label"  >Teléfono</label>
+                                    <label for="telefono" class="form-label"  >Teléfono (No se puede cambiar)</label>
                                     <input type="tel" class="form-control" id="telefonoLocal" value="${local.telefonoLocal}">
                                     <div class="invalid-feedback">Por favor introduzca un telefono válido.</div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="email" class="form-label disabled readonly" aria-label="Disabled input example" >Email (No se puede cambiar)</label>
+                                    <label for="email" class="form-label disabled readonly" aria-label="Disabled input example" >Email</label>
                                     <input type="email" class="form-control" id="emailLocal" value="${local.emailLocal}">
                                     <div class="invalid-feedback">Por favor introduzca un email válido.</div>
                                 </div>

@@ -42,8 +42,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email</label> <input
-                                        type="email" class="form-control" name="email" id="email"
+                                    <label for="email" class="form-label">Email</label> 
+                                    <input type="email" class="form-control" name="email" id="email"
                                         placeholder="mi.correo@mail.com" required>
                                     <div class="invalid-feedback">Por favor introduzca un email válido.</div>
                                 </div>

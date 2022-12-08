@@ -34,11 +34,12 @@ public class ControladorRegistroCliente extends HttpServlet {
             switch (accion) {
                 case "insertar":
                     this.insertarCliente(request, response);
-                   
+
                     break;
                 case "login":
-                    this.loginCliente(request,response);
+                    this.login(request, response);
                     break;
+                
             }
         }
     }
@@ -51,7 +52,11 @@ public class ControladorRegistroCliente extends HttpServlet {
             switch (accion) {
                 case "eliminar":
                     this.eliminarCliente(request, response);
-                    break;                
+                    break;
+                case "actualizar":
+                    this.actualizarCliente(request, response);
+                    break;
+                
             }
         }
     }
@@ -63,12 +68,12 @@ public class ControladorRegistroCliente extends HttpServlet {
         String email = request.getParameter("email");
         Cliente cliente = new Cliente(nombre, password, email);
         int registrosModificados = new ClienteDAO().insertar(cliente);
-        if(registrosModificados > 0){
+        if (registrosModificados > 0) {
             HttpSession sesion = request.getSession();
             sesion.setAttribute("cliente", cliente);
             this.listarLocal(request, response);
         }
-        
+
     }
 
     private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
@@ -77,32 +82,37 @@ public class ControladorRegistroCliente extends HttpServlet {
         Cliente cliente = (Cliente) sesion.getAttribute("cliente");
         String email = cliente.getEmailCliente();
         String nombre = cliente.getNombreCliente();
-        int registrosModificados = new ClienteDAO().eliminar(email,nombre);
-        if(registrosModificados> 0){
+        int registrosModificados = new ClienteDAO().eliminar(email, nombre);
+        if (registrosModificados > 0) {
             response.sendRedirect("index.jsp");
-        }else{
+        } else {
             response.sendRedirect("PerfilCliente.jsp");
         }
-        
 
     }
-    
-    
-    private void loginCliente(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { 
+
+    private void login(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String email = request.getParameter("email");
-        String password = request.getParameter("password");       
-        Cliente cliente = new ClienteDAO().encontrar(email,password);
-        if(cliente !=null ){
+        String password = request.getParameter("password");
+        Cliente cliente = new ClienteDAO().encontrar(email, password);
+        if (cliente != null) {
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("cliente", cliente);            
+            sesion.setAttribute("cliente", cliente);
             this.listarLocal(request, response);
-        }else {
-            response.sendRedirect("index.jsp");  
-        }    
-        
+        } else {
+            Local local = new LocalDAO().encontrar(email, password);
+            if (local == null) {
+                response.sendRedirect("index.jsp");
+            } else {
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("local", local);
+                response.sendRedirect("PrincipalLocal.jsp");
+            }
+        }
+
     }
-    
+
     private void listarLocal(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Local> locales = new LocalDAO().listar();
@@ -110,6 +120,21 @@ public class ControladorRegistroCliente extends HttpServlet {
         session.setAttribute("locales", locales);
         response.sendRedirect("PrincipalCliente.jsp");
     }
-    
-    
+
+    private void actualizarCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {      
+       String nombre = request.getParameter("nombre");
+        String email = request.getParameter("email");
+        int actualizado=new ClienteDAO().actualizar(nombre,email);
+        if (actualizado > 0) {
+            HttpSession sesion= request.getSession();
+            Cliente cliente=(Cliente) sesion.getAttribute("cliente");
+            cliente.setNombreCliente(nombre);
+            sesion.setAttribute("cliente",cliente);
+            response.sendRedirect("index.jsp");
+        } else {
+            response.sendRedirect("PerfilCliente.jsp");
+        }
+    }
+
 }

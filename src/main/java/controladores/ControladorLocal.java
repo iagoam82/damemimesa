@@ -24,9 +24,6 @@ public class ControladorLocal extends HttpServlet {
                 case "insertar":
                     this.insertarLocal(request, response);
                     break;
-                case "loginLocal":
-                    this.loginLocal(request, response);
-                    break;
             }
         }
     }
@@ -42,9 +39,6 @@ public class ControladorLocal extends HttpServlet {
                     break;
                 case "listaVista":
                     this.listarLocalVistaPrincipal(request, response);
-                    break;
-                case "loginLocal":
-                    this.loginLocal(request, response);
                     break;
                 case "eliminar":
                     this.eliminarLocal(request, response);
@@ -104,18 +98,5 @@ public class ControladorLocal extends HttpServlet {
             response.sendRedirect("PerfilLocal.jsp");
         }
 
-    }
-
-    private void loginLocal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String emailLocal = request.getParameter("emailLocal");
-        String passwordLocal = request.getParameter("passwordLocal");
-        Local local = new LocalDAO().encontrar(emailLocal, passwordLocal);
-        if (local ==null) {
-            response.sendRedirect("index.jsp");
-        } else {
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("local", local);
-            response.sendRedirect("PrincipalLocal.jsp");
-        }
     }
 }

@@ -31,20 +31,14 @@
                 </ul>
                 <!-- Enlaces momentáneos fin -->
             </div>
-            <div class="row"  id="fila2">
-                <div class="col-3" ></div>
-                <div class="col-6 offset-2">
-                    <img class="mb-4" src="recursos/imagenes/logo.png" alt="" width="200" height="100">
-                    <h1 class="h3 mb-3 fw-normal">Introduce tus datos</h1>
-                </div>
-                <div class="col-3"></div>
-            </div>
-            <div class="row" id="fila3">
-                <div class="col-1" ></div>
-                <!--FORMULARIO CLIENTES-->
-                <div class="col-5" id="formuCliente">
+            <div class="row">
+                <div class="col-3 izquierda"></div>
+                <div class="col-6 centro text-center">
                     <main class="form-signin w-100 mb-5 mt-5">
                         <form class="needs-validation novalidate" method="post" action="../ControladorRegistroCliente?accion=login">
+                            <img class="mb-4" src="recursos/imagenes/logo.png" alt="" width="200" height="100">
+                            <h1 class="h3 mb-3 fw-normal">Introduce tus datos</h1>
+
                             <div class="form-floating input-group has-validation">
                                 <input type="email" class="form-control" name ="email" id="floatingInput"
                                        placeholder="name@example.com" required> <label
@@ -59,49 +53,24 @@
                                 <label> <input type="checkbox" value="remember-me">Recordarme
                                 </label>
                             </div>
-                            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar Cliente</button>
+                            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+                            <hr>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Registrarse
+                                    
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="RegistroCliente.jsp">Registrarse como cliente</a></li>
+                                    <li><a class="dropdown-item" href="RegistroLocal.jsp">Registrarse como local</a></li>
+                                </ul>
+                            </div>
                         </form>
                     </main>
                 </div>
-                <!--FORMULARIO LOCALES-->
-                
-                <div class="col-5" id="formuLocal">
-                    <main class="form-signin w-100 mb-5 mt-5">
-                        <form class="needs-validation novalidate" method="post" action="../ControladorLocal?accion=loginLocal">
-                            <div class="form-floating input-group has-validation">
-                                <input type="email" class="form-control" name ="emailLocal" id="floatingInput"
-                                       placeholder="name@example.com" required> <label
-                                       for="floatingInput">Email</label>
-                            </div>
-                            <div class="form-floating input-group has-validation">
-                                <input type="password" class="form-control" name ="passwordLocal" id="floatingPassword"
-                                       placeholder="Password" required> <label for="floatingPassword">Contraseña</label>
-                            </div>
-
-                            <div class="checkbox mb-3">
-                                <label> <input type="checkbox" value="remember-me">Recordarme
-                                </label>
-                            </div>
-                            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar Local</button>
-                        </form>
-                    </main>
-                </div>
-                <div class="col-1"></div>
+                <div class="col-3 derecha"></div>
             </div>
-            <div class="row" id="fila4">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-primary dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false"> 
-                        Registrarse
-
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="RegistroCliente.jsp">Registrarse como cliente</a></li>
-                        <li><a class="dropdown-item" href="RegistroLocal.jsp">Registrarse como local</a></li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
