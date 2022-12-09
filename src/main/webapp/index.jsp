@@ -6,8 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>damemimesa</title>
-        <link rel="icon" type="image/png" href="recursos/logo_simple.png">
+        <jsp:include page="/recursos/comunes/tituloPaginas.jsp"/>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -46,20 +45,19 @@
                             </div>
                             <div class="form-floating input-group has-validation">
                                 <input type="password" class="form-control" name ="password" id="floatingPassword"
-                                       placeholder="Password" required> <label for="floatingPassword">Contraseña</label>
+                                       placeholder="Password" required>
+                                <div class="input-group-append">
+                                    
+                                </div>
+                                <label for="floatingPassword">Contraseña</label>
                             </div>
-
-                            <div class="checkbox mb-3">
-                                <label> <input type="checkbox" value="remember-me">Recordarme
-                                </label>
-                            </div>
-                            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+                            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Entrar</button>
                             <hr>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-primary dropdown-toggle"
                                         data-bs-toggle="dropdown" aria-expanded="false"> 
                                     Registrarse
-                                    
+
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="RegistroCliente.jsp">Registrarse como cliente</a></li>
@@ -78,18 +76,5 @@
             crossorigin="anonymous">
         </script>
     </body>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fondoclaro" style="    background-color:bisque">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2022 damemimesa</p>
-
-        <a href="/index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-            <img src="/recursos/imagenes/logo.png" class="img-fluid" alt="logo damemimesa" style="width:140px;height:65px;">
-        </a>
-
-        <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre nosotros</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">nada</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">nada</a></li>
-        </ul>
-    </footer>
+    <jsp:include page="/recursos/comunes/piePagina.jsp"/>
 </html>

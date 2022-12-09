@@ -9,4 +9,6 @@ footer {
     margin-top: auto;
 }
 
-.rojo{background-color: red;}
+.enlaces{
+    color:white;
+    text-decoration: none;}

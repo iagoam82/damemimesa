@@ -9,8 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Registro de cliente</title>
-        <link rel="icon" type="image/png" href="recursos/logo_simple.png">
+        <jsp:include page="/recursos/comunes/tituloPaginas.jsp"/>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -65,21 +64,9 @@
             </div>
             
         </div>
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fondoclaro">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2022 damemimesa</p>
-
-    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                  <img src="/recursos/imagenes/logo.png" class="img-fluid" alt="logo damemimesa" style="width:140px;height:65px;">
-                </a>
-
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre nosotros</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">nada</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">nada</a></li>
-    </ul>
-  </footer>
+        
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
         <script src="recursos/form-validation.js"></script>
     </body>
+    <jsp:include page="/recursos/comunes/piePagina.jsp"/>
 </html>
