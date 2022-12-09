@@ -54,7 +54,7 @@
                             <div class="col-12">
                                 <label for="username" class="form-label" >Nombre de usuario</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" name="nombre" id="nombre" >
+                                    <input type="text" class="form-control" name="nombre" id="nombre" value="${cliente.nombreCliente}">
                                     <div class="invalid-feedback">Necesita aportar un nombre de usuario.</div>
                                 </div>
                             </div>
