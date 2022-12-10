@@ -5,9 +5,11 @@ body{
     background-color:bisque
 }
 
-footer {
-    margin-top: auto;
-}
+footer{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
 
 .enlaces{
     color:white;

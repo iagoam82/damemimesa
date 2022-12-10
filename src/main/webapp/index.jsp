@@ -13,23 +13,11 @@
             integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
             crossorigin="anonymous">
         <link rel="stylesheet" href="recursos/css/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row fila1" id="fila1">
-                <!-- Enlaces momentáneos inicio -->
-
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="PerfilCliente.jsp">Perfil cliente</a></li>
-                    <li class="list-inline-item"><a href="PrincipalCliente.jsp">Principal cliente</a></li>
-                    <li class="list-inline-item"><a href="ReservaMesa.jsp">Reserva mesa </a></li>
-                    <li class="list-inline-item">//</li>
-                    <li class="list-inline-item"><a href="PerfilLocal.jsp">Perfil local</a></li>
-                    <li class="list-inline-item"> <a href="PrincipalLocal.jsp">Principal local</a></li>
-                    <li class="list-inline-item"><a href="InfoMesa.jsp">Info mesa </a></li>
-                </ul>
-                <!-- Enlaces momentáneos fin -->
-            </div>
             <div class="row">
                 <div class="col-3 izquierda"></div>
                 <div class="col-6 centro text-center">
@@ -40,16 +28,14 @@
 
                             <div class="form-floating input-group has-validation">
                                 <input type="email" class="form-control" name ="email" id="floatingInput"
-                                       placeholder="name@example.com" required> <label
-                                       for="floatingInput">Email</label>
+                                       placeholder="name@example.com" required> 
+                                <label for="floatingInput">Email</label>
                             </div>
                             <div class="form-floating input-group has-validation">
                                 <input type="password" class="form-control" name ="password" id="floatingPassword"
                                        placeholder="Password" required>
-                                <div class="input-group-append">
-                                    
-                                </div>
                                 <label for="floatingPassword">Contraseña</label>
+                                <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
                             </div>
                             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Entrar</button>
                             <hr>
@@ -75,6 +61,26 @@
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous">
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </body>
     <jsp:include page="/recursos/comunes/piePagina.jsp"/>
 </html>
+<script type="text/javascript">
+function mostrarPassword(){
+		var cambio = document.getElementById("floatingPassword");
+		if(cambio.type == "password"){
+			cambio.type = "text";
+			$('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+		}else{
+			cambio.type = "password";
+			$('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+		}
+	} 
+	
+	$(document).ready(function () {
+	//CheckBox mostrar contraseña
+	$('#ShowPassword').click(function () {
+		$('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+	});
+});
+</script>
