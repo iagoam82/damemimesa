@@ -1,9 +1,5 @@
-body{
-    background-image:url("/recursos/imagenes/fondo.jpg");  
-}
-.fondoclaro{
-    background-color:bisque
-}
+body{background-image:url("/recursos/imagenes/fondo.jpg");  }
+.fondoclaro{background-color:bisque}
 .filtros{
     background-color:bisque;
     border-radius:10px;
@@ -35,9 +31,4 @@ body{
     text-decoration: underline;
     font-weight: bold; 
 }
-.separado{
-    margin-bottom: 20px;
-}
-footer {
-    margin-top: auto;
-}
+.separado{margin-bottom: 20px;}

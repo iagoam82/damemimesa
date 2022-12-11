@@ -50,8 +50,8 @@
                                 <button class="w-100 btn btn-primary btn-lg" type="submit">Guardar cambios</button>
                                 <hr>
                                 <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit" >
-                                    <a style="color:white;
-                                       text-decoration: none;" href="${pageContext.request.contextPath}/ControladorLocal?accion=eliminar&telefono_local=${local.telefonoLocal}">
+                                    <a style="color:white;text-decoration: none;"
+                                       href="${pageContext.request.contextPath}/ControladorLocal?accion=eliminar&telefono_local=${local.telefonoLocal}">
                                         Eliminar perfil
                                     </a>
                                 </button>
@@ -62,10 +62,11 @@
                 <div class="col-3"></div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        </script>
     </body>
     <jsp:include page="/recursos/comunes/piePagina.jsp"/>
-
 </html>
 
 

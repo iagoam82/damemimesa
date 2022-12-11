@@ -11,6 +11,10 @@ import java.util.logging.Logger;
 import modelo.*;
 import modelo.ConexionBD;
 
+/**
+ * @author Iago Alonso Clase con los atributos y métodos para comunicarse con la
+ * base de datos
+ */
 public class LocalDAO {
 
     private static final String SQL_SELECT = "SELECT telefono_local, direccion_local, nombre_local, email_local FROM local";
@@ -18,6 +22,14 @@ public class LocalDAO {
     private static final String SQL_FINDBYID = "SELECT * FROM local WHERE email_local = ? AND password_local = ?";
     private static final String SQL_DELETE = "DELETE FROM local WHERE telefono_local = ? AND nombre_local =?";
 
+    /**
+     * Método que crea una lista de locales
+     *
+     * @return List
+     * @see Web Pages.PrincipalCliente, Web
+     * Pages.recursos.comunes.navegadorCliente, Web
+     * Pages.recursos.comunes.navegadorLocal
+     */
     public List<Local> listar() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -53,6 +65,13 @@ public class LocalDAO {
         return locales;
     }
 
+    /**
+     * Método que inserta un local
+     *
+     * @param local
+     * @return int
+     * @see Web Pages.RegistroLocal
+     */
     public int insertar(Local local) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -81,11 +100,19 @@ public class LocalDAO {
         return rows;
     }
 
+    /**
+     * Método que busca coincidencia entre un email y un password
+     *
+     * @param email
+     * @param password
+     * @return Local
+     * @see Web Pages.index
+     */
     public Local encontrar(String email, String password) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Local local=null;
+        Local local = null;
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -97,14 +124,14 @@ public class LocalDAO {
             stmt.setString(1, email);
             stmt.setString(2, password);
             rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 long telefonoLocal = rs.getLong("telefono_local");
                 String direccionLocal = rs.getString("direccion_local");
                 String nombreLocal = rs.getString("nombre_local");
-                local=new Local(telefonoLocal,direccionLocal, nombreLocal, email, password);
+                local = new Local(telefonoLocal, direccionLocal, nombreLocal, email, password);
             }
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
@@ -113,9 +140,15 @@ public class LocalDAO {
             ConexionBD.close(conn);
         }
         return local;
-
     }
 
+    /**
+     * Método que elimina un local
+     *
+     * @param telefono
+     * @param nombre
+     * @return int
+     */
     public int eliminar(Long telefono, String nombre) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -139,5 +172,4 @@ public class LocalDAO {
         }
         return rows;
     }
-
 }

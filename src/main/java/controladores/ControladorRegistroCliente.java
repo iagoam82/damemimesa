@@ -1,19 +1,9 @@
 package controladores;
 
-/*
-import modelo.ConexionBD;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
- */
 import dao.ClienteDAO;
 import dao.LocalDAO;
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +13,21 @@ import javax.servlet.http.HttpSession;
 import modelo.Cliente;
 import modelo.Local;
 
+/**
+ * @author Iago Alonso Clase que procesa las peticiones del navegador y las
+ * comunica a las clase DAO del cliente
+ */
 @WebServlet("/ControladorRegistroCliente")
 public class ControladorRegistroCliente extends HttpServlet {
 
+    /**
+     * Método que recoge las acciones de insertar y login
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,11 +41,18 @@ public class ControladorRegistroCliente extends HttpServlet {
                 case "login":
                     this.login(request, response);
                     break;
-                
             }
         }
     }
 
+    /**
+     * Método que recoge las acciónes de eliminar y actualizar
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,11 +65,19 @@ public class ControladorRegistroCliente extends HttpServlet {
                 case "actualizar":
                     this.actualizarCliente(request, response);
                     break;
-                
             }
         }
     }
 
+    /**
+     * Método que recoge información del navegador para insertar un cliente
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @see dao.ClienteDAO.insertar()
+     */
     private void insertarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre");
@@ -73,9 +90,17 @@ public class ControladorRegistroCliente extends HttpServlet {
             sesion.setAttribute("cliente", cliente);
             this.listarLocal(request, response);
         }
-
     }
 
+    /**
+     * Método que recoge los datos para eliminar un cliente
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @see dao.ClienteDAO.eliminar()
+     */
     private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
@@ -88,9 +113,18 @@ public class ControladorRegistroCliente extends HttpServlet {
         } else {
             response.sendRedirect("PerfilCliente.jsp");
         }
-
     }
 
+    /**
+     * Método que busca coincidencia email-password en clientes, si no encuentra
+     * busca telefono-password en locales
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @see dao.ClienteDAO.encontrar(), dao.LocalDAO.encontrar()
+     */
     private void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -110,9 +144,17 @@ public class ControladorRegistroCliente extends HttpServlet {
                 response.sendRedirect("PrincipalLocal.jsp");
             }
         }
-
     }
 
+    /**
+     * Método que crea una lista de locales y manda la info a PrincipalCliente
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @see dao.LocalDAO.listar()
+     */
     private void listarLocal(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Local> locales = new LocalDAO().listar();
@@ -121,20 +163,28 @@ public class ControladorRegistroCliente extends HttpServlet {
         response.sendRedirect("PrincipalCliente.jsp");
     }
 
+    /**
+     * Método que sustituye el nombre de un cliente
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @see dao.ClienteDAO.actualizar()
+     */
     private void actualizarCliente(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {      
-       String nombre = request.getParameter("nombre");
+            throws ServletException, IOException {
+        String nombre = request.getParameter("nombre");
         String email = request.getParameter("email");
-        int actualizado=new ClienteDAO().actualizar(nombre,email);
+        int actualizado = new ClienteDAO().actualizar(nombre, email);
         if (actualizado > 0) {
-            HttpSession sesion= request.getSession();
-            Cliente cliente=(Cliente) sesion.getAttribute("cliente");
+            HttpSession sesion = request.getSession();
+            Cliente cliente = (Cliente) sesion.getAttribute("cliente");
             cliente.setNombreCliente(nombre);
-            sesion.setAttribute("cliente",cliente);
+            sesion.setAttribute("cliente", cliente);
             response.sendRedirect("index.jsp");
         } else {
             response.sendRedirect("PerfilCliente.jsp");
         }
     }
-
 }

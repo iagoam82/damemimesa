@@ -1,16 +1,6 @@
-body{
-    background-image:url("/recursos/imagenes/fondo.jpg");  
-}
-.fondoclaro{
-    background-color:bisque
-}
-
-footer{
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            }
-
+body{background-image:url("/recursos/imagenes/fondo.jpg");  }
+.fondoclaro{ background-color:bisque}
 .enlaces{
     color:white;
-    text-decoration: none;}
+    text-decoration: none;
+}
