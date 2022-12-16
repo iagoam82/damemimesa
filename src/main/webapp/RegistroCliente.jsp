@@ -47,6 +47,7 @@
                                 <br>
                                 <button class="w-100 btn btn-primary btn-lg" type="submit">Registrarse</button>
                             </form>
+                           
                         </div>
                     </main>
                 </div>

@@ -34,8 +34,13 @@
                                 <label for="floatingPassword">Contraseña</label>
                                 <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
                             </div>
-                            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Entrar</button>
+                            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" onclick="comprobar()">Entrar</button>
                             <hr>
+                            
+                            
+        <%String alerta=(String)request.getAttribute("alerta");
+        System.out.println(alerta);%>
+        
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Registrarse</button>
                                 <ul class="dropdown-menu">
@@ -76,4 +81,4 @@
             $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
         });
     });
-</script>
+ </script>

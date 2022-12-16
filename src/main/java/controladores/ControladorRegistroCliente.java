@@ -3,6 +3,7 @@ package controladores;
 import dao.ClienteDAO;
 import dao.LocalDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -130,17 +131,31 @@ public class ControladorRegistroCliente extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Cliente cliente = new ClienteDAO().encontrar(email, password);
+        PrintWriter out = response.getWriter();
+        String alertaOK = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n"
+                + "  Bienvenid@ de nuevo\n"
+                + "  <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>\n"
+                + "</div>";
+        String alertaERROR = "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">\n"
+                + "  Revisa tus datos de acceso.\n"
+                + "  <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>\n"
+                + "</div>";
         if (cliente != null) {
             HttpSession sesion = request.getSession();
+            request.setAttribute("alerta", alertaOK);
             sesion.setAttribute("cliente", cliente);
             this.listarLocal(request, response);
         } else {
             Local local = new LocalDAO().encontrar(email, password);
             if (local == null) {
+                HttpSession sesion = request.getSession();
+                request.setAttribute("alerta", alertaERROR);
                 response.sendRedirect("index.jsp");
+
             } else {
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("local", local);
+                request.setAttribute("alerta", alertaOK);
                 response.sendRedirect("PrincipalLocal.jsp");
             }
         }

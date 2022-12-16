@@ -1,4 +1,5 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fondoclaro">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" 
+        style="background-color:bisque;">
     <p class="col-md-4 mb-0 text-muted">&copy; 2022 damemimesa</p>
     <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
         <img src="/recursos/imagenes/logo.png" class="img-fluid" alt="logo damemimesa" style="width:140px;height:65px;">

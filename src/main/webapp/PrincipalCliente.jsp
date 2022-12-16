@@ -15,6 +15,11 @@
     </head>
     <body>
         <jsp:include page="/recursos/comunes/navegadorCliente.jsp"/>
+        <div>
+            <%String alerta=(String)request.getAttribute("alerta");
+        %>
+        <script>System.out.println(alerta);</script>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-2 filtros m-1">

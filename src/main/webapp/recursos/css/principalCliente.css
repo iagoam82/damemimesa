@@ -1,5 +1,4 @@
-body{background-image:url("/recursos/imagenes/fondo.jpg");  }
-.fondoclaro{background-color:bisque}
+body{background-image:url("/recursos/imagenes/fondo.jpg");}
 .filtros{
     background-color:bisque;
     border-radius:10px;

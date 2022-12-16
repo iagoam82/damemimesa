@@ -44,7 +44,8 @@
                                     </a>
                                 </button>
                                 <hr>
-                                <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit" >
+                                <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit" onClick="confirm('Eliminar usuario?')">
+                                    
                                     <a style="color:white;text-decoration: none;"
                                        href="${pageContext.request.contextPath}/ControladorRegistroCliente?accion=eliminar&email_cliente=${email}">
                                         Eliminar perfil

@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row mt-2 ">
-                <div class="col fondoclaro borde m-2 ">
+                <div class="col  borde m-2 " style="background-color:bisque">
                     <div class="row justify-content-center">
                         <div class="col m-2 text-center pt-2 ">
                             <p class="display-5 ">Salón</p>
@@ -123,7 +123,7 @@
                 </div>
                 <!--        Aquí añadir estancias       -->
 
-                <div class="col fondoclaro borde m-2 ">
+                <div class="col borde m-2 " style="background-color:bisque">
                     <div class="row">
                         <div class="col m-2 text-center pt-2 ">
                             <p class="display-5 ">Terraza</p>

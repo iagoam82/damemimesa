@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false"%>
 <%@page import="modelo.Local" %>
@@ -49,7 +49,7 @@
                                 <br>
                                 <button class="w-100 btn btn-primary btn-lg" type="submit">Guardar cambios</button>
                                 <hr>
-                                <button class="w-100 btn btn-primary btn-lg btn-danger" type="submit" >
+                                <button class="w-100 btn btn-primary btn-lg btn-danger" onClick="confirm('¿desea eliminar el usuario?')" type="submit" >
                                     <a style="color:white;text-decoration: none;"
                                        href="${pageContext.request.contextPath}/ControladorLocal?accion=eliminar&telefono_local=${local.telefonoLocal}">
                                         Eliminar perfil

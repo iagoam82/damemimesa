@@ -1,5 +1,4 @@
 body{background-image:url("/recursos/imagenes/fondo.jpg");}
-.fondoclaro{background-color:bisque}
 .borde{
     border: 2px solid black;
     border-radius: 8px;
